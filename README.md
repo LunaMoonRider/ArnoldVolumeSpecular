@@ -1,6 +1,6 @@
 # Arnold Specular for Volumes - Nyx Blinn
 
-This node generates accumulated reflection values based on Blinn-Phong model. 
+This node generates accumulated reflection values based on Blinn-Phong model. This node emulates reflection on volumetrics. 
 $$I_{specular} = K_s I_{light}(H.N)^{n}$$
 
 **N** - Specular Power
@@ -9,7 +9,6 @@ $$I_{specular} = K_s I_{light}(H.N)^{n}$$
 **N** - Surface Normal
 **n** - Power
 
-Power part of the formula is ignored in this since power can be added in the shader and artistically controlled. 
 
 Refer to the example hip file for a basic shader setup.
 
@@ -45,6 +44,15 @@ This node requires a Normal vector as input.
 For surface, you can get it using the State Float node. 
 For volumes, create gradient of the density, normalize it in SOPs.  And import that using Volume Sample RGB.
 
-This node generates accumulated reflection values. To get usable reflection, use a Power node (Values of 8 or 16 works for me), clamp the values and connect it to the Emission color. 
+This node generates accumulated reflection values. Connect the output to the emission of the Standard Volume shader.
 
+There are precompiled .dll files in this project. These are compiled for 
+Houdini 20.0.547 and HtoA 6.2.5.1.
 
+## Known Issues
+
+ - Reflection is not physically correct.
+ - Code is bad!! This is my first Arnold C++ API project. I'm open to critism and improvement. 
+ - Rendering is very slow. This is because currently I'm using all the light samples in light loop. Need to figure a way get only the important samples.
+## Future
+ - Implement the same using Closures for physically accurate reflection and faster rendering since we be skipping the light loops.
