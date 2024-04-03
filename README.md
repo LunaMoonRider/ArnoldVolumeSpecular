@@ -50,7 +50,8 @@ This node requires a Normal vector as input.
 For surface, you can get it using the State Float node. 
 For volumes, create gradient of the density, normalize it in SOPs.  And import that using Volume Sample RGB.
 
-This node generates accumulated reflection values. Connect the output to the emission of the Standard Volume shader.
+This node generates accumulated reflection values. Connect the output to the emission color of the Standard Volume shader.
+Check the example hip file for the reference values. 
 
 There are precompiled .dll files in this project. These are compiled for 
 Houdini 20.0.547 and HtoA 6.2.5.1.
@@ -58,7 +59,7 @@ Houdini 20.0.547 and HtoA 6.2.5.1.
 ## Known Issues
 
  - Reflection is not physically correct.
- - Code is bad!! This is my first Arnold C++ API project. I'm open to critism and improvement. 
+ - Code is bad!! This is my first Arnold C++ API project. I'm open to criticism and improvement. 
  - Rendering is very slow. This is because currently I'm using all the light samples in light loop. Need to figure a way get only the important samples.
 ## Future
  - Implement the same using Closures for physically accurate reflection and faster rendering since we be skipping the light loops.
