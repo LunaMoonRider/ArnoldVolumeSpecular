@@ -6,9 +6,13 @@ This node generates accumulated reflection values based on Blinn-Phong model. Th
 $$I_{specular} = K_s I_{light}(H.N)^{n}$$
 
 **N** - Specular Power
+
 **I**   - Light Direction
+
 **H** - Halfway Vector between Light Direction and Viewer
+
 **N** - Surface Normal
+
 **n** - Power
 
 
