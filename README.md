@@ -1,5 +1,7 @@
 # Arnold Specular for Volumes - Nyx Blinn
 
+![Here is a preview render](render_comp.jpg)
+
 This node generates accumulated reflection values based on Blinn-Phong model. This node emulates reflection on volumetrics. 
 $$I_{specular} = K_s I_{light}(H.N)^{n}$$
 
